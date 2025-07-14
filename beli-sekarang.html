@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Beli Sekarang - KomikKu</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>body { font-family: 'Inter', sans-serif; }</style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Navbar -->
+ <header class="bg-blue-600 text-white py-4 shadow-md">
+    <div class="container mx-auto px-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold">E-BookZone</h1>
+      <nav class="space-x-4 hidden md:block">
+        <a href="index.html" class="hover:underline">Beranda</a>
+        <a href="kategori.html" class="hover:underline">Kategori</a>
+        <a href="tentang.html" class="hover:underline">Tentang</a>
+      </nav>
+    </div>
+  </header>
+  <!-- Isi Halaman -->
+  <main class="max-w-4xl mx-auto py-12 px-4">
+    <h2 class="text-3xl font-bold mb-8">Konfirmasi Pembelian</h2>
+
+    <div class="bg-white rounded-lg shadow p-6 mb-8">
+      <h3 class="text-xl font-semibold mb-4">Ringkasan Produk</h3>
+      <div class="flex items-center gap-4">
+        <img id="produk-gambar" src="" alt="Produk" class="w-24 h-36 object-cover rounded">
+        <div>
+          <h4 id="produk-nama" class="text-lg font-bold"></h4>
+          <p id="produk-harga" class="text-blue-600 font-semibold"></p>
+          <p id="produk-jumlah" class="text-sm text-gray-600"></p>
+          <p id="produk-total" class="mt-2 font-bold text-green-600"></p>
+        </div>
+      </div>
+    </div>
+
+    <form id="form-pembelian" class="bg-white rounded-lg shadow p-6 space-y-4">
+  <h3 class="text-xl font-semibold">Informasi Pembeli</h3>
+  <div>
+    <label class="block mb-1 font-medium">Nama Lengkap</label>
+    <input type="text" class="w-full border px-3 py-2 rounded" required>
+  </div>
+  <div>
+    <label class="block mb-1 font-medium">Email</label>
+    <input type="email" class="w-full border px-3 py-2 rounded" required>
+  </div>
+  <div>
+    <label class="block mb-1 font-medium">Alamat Pengiriman</label>
+    <textarea class="w-full border px-3 py-2 rounded" required></textarea>
+  </div>
+  <a href="konfirmasi.html" class="mt-4 block w-full bg-blue-500 text-white py-2 rounded text-center hover:bg-blue-600 transition">
+          beli Sekarang
+        </a>
+</form>
+  </main>
+
+  <footer class="bg-white border-t py-6 text-center text-gray-600 text-sm mt-10">
+    &copy; 2025 KomikKu. All rights reserved.
+  </footer>
+
+  <script>
+    // Simulasi data dari tombol "Beli Sekarang"
+    const product = {
+      nama: "One Piece Vol. 1",
+      harga: 38000,
+      jumlah: 1,
+      gambar: "onepice.jpeg"
+    };
+
+    document.getElementById("produk-nama").textContent = product.nama;
+    document.getElementById("produk-harga").textContent = "Harga: Rp" + product.harga.toLocaleString();
+    document.getElementById("produk-jumlah").textContent = "Jumlah: " + product.jumlah;
+    document.getElementById("produk-total").textContent = "Total: Rp" + (product.harga * product.jumlah).toLocaleString();
+    document.getElementById("produk-gambar").src = product.gambar;
+
+    // Di masa depan bisa menggunakan localStorage atau URL params
+  </script>
+
+</body>
+</html>

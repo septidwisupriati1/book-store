@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Detail Produk - Naruto Vol. 1</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Navbar -->
+  <header class="bg-blue-600 text-white py-4 shadow-md">
+    <div class="container mx-auto px-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold">E-BookZone</h1>
+      <nav class="space-x-4 hidden md:block">
+        <a href="index.html" class="hover:underline">Beranda</a>
+        <a href="kategori.html" class="hover:underline">Kategori</a>
+        <a href="tentang.html" class="hover:underline">Tentang</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Detail Produk -->
+  <main class="max-w-7xl mx-auto py-12 px-4 grid md:grid-cols-2 gap-10 items-start">
+    
+    <!-- Gambar Produk -->
+    <div class="bg-white p-6 rounded-lg shadow">
+      <img src="naruto.jpg" alt="Naruto Vol. 1" class="w-full h-auto object-cover rounded">
+    </div>
+
+    <!-- Info Produk -->
+    <div>
+      <h2 class="text-3xl font-bold text-gray-800">Naruto Vol. 1</h2>
+      <p class="text-gray-600 mt-1 text-lg">oleh <span class="text-blue-600 font-semibold">Masashi Kishimoto</span></p>
+
+      <div class="mt-4">
+        <span class="text-xl font-bold text-blue-600">Rp35.000</span>
+      </div>
+
+      <p class="mt-6 text-gray-700 leading-relaxed">
+        Naruto Vol. 1 memperkenalkan petualangan awal Uzumaki Naruto, seorang ninja muda yang ingin menjadi Hokage.
+        Cerita penuh semangat, persahabatan, dan perjuangan menghadapi tantangan pertama di Akademi Ninja Konoha.
+      </p>
+
+      <div class="mt-6">
+        <label class="block mb-2 text-sm font-semibold">Jumlah:</label>
+        <input id="qty" type="number" value="1" min="1" class="w-20 px-3 py-2 border border-gray-300 rounded" />
+      </div>
+
+      <div class="mt-6 flex gap-4">
+        <button onclick="addToCart()" class="bg-blue-600 text-white font-semibold px-6 py-3 rounded hover:bg-blue-700 transition">
+          Tambah ke Keranjang
+        </button>
+        <a href="beli-sekarang.html" class="bg-white border border-blue-600 text-blue-600 font-semibold px-6 py-3 rounded hover:bg-blue-50 transition">
+          Beli Sekarang
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Produk Rekomendasi -->
+  <section class="bg-white py-12 px-4">
+    <div class="max-w-7xl mx-auto">
+      <h3 class="text-2xl font-bold mb-6">Rekomendasi Lainnya</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        
+        <div class="bg-gray-50 p-4 rounded shadow hover:shadow-lg">
+          <img src="kusuriya.jpg" alt="Apothecary Diaries" class="w-full h-60 object-cover rounded">
+          <h4 class="mt-3 text-lg font-semibold">The Apothecary Diaries Vol. 9</h4>
+          <p class="text-sm text-gray-500">Natsu Hyuga</p>
+          <p class="text-blue-600 font-bold mt-1">Rp36.000</p>
+        </div>
+
+        <div class="bg-gray-50 p-4 rounded shadow hover:shadow-lg">
+          <img src="dilan.jpg" alt="Dilan 1990" class="w-full h-60 object-cover rounded">
+          <h4 class="mt-3 text-lg font-semibold">Dilan 1990</h4>
+          <p class="text-sm text-gray-500">Pidi Baiq</p>
+          <p class="text-blue-600 font-bold mt-1">Rp76.000</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t py-6 text-center text-gray-600 text-sm mt-10">
+    &copy; 2025 KomikKu. All rights reserved. | 
+    <a href="#" class="text-blue-500 hover:underline">Kebijakan Privasi</a>
+  </footer>
+
+  <!-- Script Tambah ke Keranjang -->
+  <script>
+    function addToCart() {
+      const qty = parseInt(document.getElementById("qty").value);
+      if (qty <= 0) {
+        alert("Jumlah harus minimal 1");
+        return;
+      }
+
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const product = {
+        id: "naruto1",
+        nama: "Naruto Vol. 1",
+        harga: 35000,
+        jumlah: qty,
+        gambar: "naruto.jpg"
+      };
+
+      const existing = cart.find(item => item.id === product.id);
+      if (existing) {
+        existing.jumlah += qty;
+      } else {
+        cart.push(product);
+      }
+
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert("Produk ditambahkan ke keranjang!");
+    }
+  </script>
+</body>
+</html>
